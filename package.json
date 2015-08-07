@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/aq1018/technicolor/issues"
   },
-  "homepage": "https://github.com/aq1018/technicolor#readme"
+  "homepage": "https://github.com/aq1018/technicolor#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
 }
