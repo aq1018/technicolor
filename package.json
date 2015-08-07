@@ -4,7 +4,7 @@
   "description": "Interview code test for Technicolor",
   "main": "index.js",
   "scripts": {
-    "test": "gulp"
+    "test": "mocha spec/*.js"
   },
   "repository": {
     "type": "git",
