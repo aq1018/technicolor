@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/aq1018/technicolor#readme",
   "dependencies": {
+    "bcrypt": "^0.8.4",
     "express": "^4.13.3",
     "mongodb": "^2.0.40"
   }
