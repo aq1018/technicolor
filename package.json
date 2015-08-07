@@ -1,0 +1,19 @@
+{
+  "name": "interview",
+  "version": "0.0.1",
+  "description": "Interview code test for Technicolor",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aq1018/technicolor.git"
+  },
+  "author": "Aaron Qian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aq1018/technicolor/issues"
+  },
+  "homepage": "https://github.com/aq1018/technicolor#readme"
+}
