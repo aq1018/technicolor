@@ -20,5 +20,8 @@
     "bcrypt": "^0.8.4",
     "express": "^4.13.3",
     "mongodb": "^2.0.40"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5"
   }
 }
