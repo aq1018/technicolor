@@ -3,7 +3,12 @@
 var Q = require('q');
 
 module.exports = function (mongo) {
-  return function (req, res, next) {
+
+  // This endpoint is used for health check of the application.
+  // It responds with status code 200 when health check passes,
+  // and returns 500 when critical infrastrutures such as mongodb
+  // is no longer reachable.
+  function health(req, res, next) {
     var checks = [
       // check mongo health
       Q.ninvoke(mongo.admin(), 'listDatabases')
@@ -20,7 +25,9 @@ module.exports = function (mongo) {
 
       // error handling and promise chain termination.
       .nodeify(next);
-  };
+  }
+
+  return health;
 };
 
 module.exports['@require'] = ['mongo'];
