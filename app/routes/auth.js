@@ -17,7 +17,7 @@ module.exports = function (users, auth) {
   //     "authenticated": true
   //   }
   //
-  function authenticateUserEndpoint(req, res, next) {
+  function authenticateUser(req, res, next) {
     users
 
       // get the user from db based on supplied user name
@@ -38,7 +38,7 @@ module.exports = function (users, auth) {
       .nodeify(next);
   }
 
-  return authenticateUserEndpoint;
+  return authenticateUser;
 };
 
 module.exports['@require'] = ['repositories/users', 'services/auth'];
