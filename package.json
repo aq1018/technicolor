@@ -4,7 +4,7 @@
   "description": "Interview code test for Technicolor",
   "main": "index.js",
   "scripts": {
-    "test": "mocha spec/*.js"
+    "test": "mocha -R progress spec/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -18,14 +18,15 @@
   "homepage": "https://github.com/aq1018/technicolor#readme",
   "dependencies": {
     "bcrypt": "^0.8.4",
-    "express": "^4.13.3",
-    "mongodb": "^2.0.40",
+    "electrolyte": "0.0.6",
+    "mongodb": "^1.4.39",
+    "mongoskin": "^1.4.13",
     "q": "^1.4.1",
-    "require-dir": "^0.3.0",
-    "underscore": "^1.8.3"
+    "restify": "^3.0.3"
   },
   "devDependencies": {
     "chai": "^3.2.0",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "node-mocks-http": "^1.4.3"
   }
 }
