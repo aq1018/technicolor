@@ -11,16 +11,16 @@ var fixtures = require('../../support/fixtures');
 
 describe('repositories', function() {
   describe('users', function() {
+    before(function(done) {
+      var records = require('../../fixtures/users');
+      fixtures.populate('users', records).nodeify(done);
+    });
+
+    after(function(done) {
+      fixtures.truncate('users').nodeify(done);
+    });
+
     describe('.getByUsername', function() {
-      before(function(done) {
-        var records = require('../../fixtures/users');
-        fixtures.populate('users', records).nodeify(done);
-      });
-
-      after(function(done) {
-        fixtures.truncate('users').nodeify(done);
-      });
-
       it('returns null when user is not found', function(done) {
         users
           .getByUsername('aaron')
@@ -40,7 +40,30 @@ describe('repositories', function() {
           })
           .nodeify(done);
       });
+    });
 
+    describe('.findByProfession', function() {
+      it('filters by profession with asc city order', function(done) {
+        users
+          .findByProfession('programmer', 1)
+          .then(function(users) {
+            expect(users.length).to.equal(2);
+            expect(users[0].city).to.equal('Los Angeles');
+            expect(users[1].city).to.equal('San Francisco');
+          })
+          .nodeify(done);
+      });
+
+      it('filters by profession with desc city order', function(done) {
+        users
+          .findByProfession('programmer', -1)
+          .then(function(users) {
+            expect(users.length).to.equal(2);
+            expect(users[0].city).to.equal('San Francisco');
+            expect(users[1].city).to.equal('Los Angeles');
+          })
+          .nodeify(done);
+      });
     });
   });
 });

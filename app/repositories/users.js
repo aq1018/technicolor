@@ -10,8 +10,18 @@ module.exports = function(mongo) {
     return Q.ninvoke(users, 'findOne', {username: username});
   }
 
+  // returns a list of users filtered by profession,
+  // and ordered by city.
+  // @param profession [String] the profession to filter by
+  // @param citySortOrder [1, -1] Ascending / Descending order
+  function findByProfession(profession, citySortOrder) {
+    var cursor = users.find({profession: profession}, { sort: {city: citySortOrder}});
+    return Q.ninvoke(cursor, 'toArray');
+  }
+
   return {
-    getByUsername: getByUsername
+    getByUsername: getByUsername,
+    findByProfession: findByProfession
   };
 };
 
