@@ -49,4 +49,53 @@ describe('Interview app', function() {
     });
   });
 
+  describe('POST /auth', function() {
+    var fixtures = require('../support/fixtures');
+
+    before(function(done) {
+      var records = require('../fixtures/users');
+      fixtures.populate('users', records).nodeify(done);
+    });
+
+    after(function(done) {
+      fixtures.truncate('users').nodeify(done);
+    });
+
+    it('authenticates a valid user', function(done) {
+      superagent
+        .post('http://localhost:3000/auth')
+        .set('Accept', 'application/json')
+        .send({username: 'alice', password: 'changeme'})
+        .end(function(err, res) {
+          expect(res.statusCode).to.equal(200);
+          expect(res.body).to.deep.equal({ authenticated: true });
+          done(err);
+        });
+    });
+
+    it('does not authenticate with invalid password', function(done) {
+      superagent
+        .post('http://localhost:3000/auth')
+        .set('Accept', 'application/json')
+        .send({username: 'alice', password: 'bad passowrd'})
+        .end(function(err, res) {
+          expect(res.statusCode).to.equal(200);
+          expect(res.body).to.deep.equal({ authenticated: false });
+          done(err);
+        });
+    });
+
+    it('does not authenticate with invalid user', function(done) {
+      superagent
+        .post('http://localhost:3000/auth')
+        .set('Accept', 'application/json')
+        .send({username: 'aaron', password: 'bad passowrd'})
+        .end(function(err, res) {
+          expect(res.statusCode).to.equal(200);
+          expect(res.body).to.deep.equal({ authenticated: false });
+          done(err);
+        });
+    });
+
+  });
 });
