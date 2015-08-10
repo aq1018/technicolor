@@ -9,6 +9,8 @@ var superagent = require('superagent');
 var createApp = require('../../app');
 
 describe('Interview app', function() {
+
+  // setup test server
   var app;
 
   before(function() {
@@ -17,6 +19,18 @@ describe('Interview app', function() {
 
   after(function() {
     app.close();
+  });
+
+  // setup fixtures
+  var fixtures = require('../support/fixtures');
+
+  before(function(done) {
+    var records = require('../fixtures/users');
+    fixtures.populate('users', records).nodeify(done);
+  });
+
+  after(function(done) {
+    fixtures.truncate('users').nodeify(done);
   });
 
   describe('GET /health', function() {
@@ -50,17 +64,6 @@ describe('Interview app', function() {
   });
 
   describe('POST /auth', function() {
-    var fixtures = require('../support/fixtures');
-
-    before(function(done) {
-      var records = require('../fixtures/users');
-      fixtures.populate('users', records).nodeify(done);
-    });
-
-    after(function(done) {
-      fixtures.truncate('users').nodeify(done);
-    });
-
     it('authenticates a valid user', function(done) {
       superagent
         .post('http://localhost:3000/auth')
@@ -96,6 +99,18 @@ describe('Interview app', function() {
           done(err);
         });
     });
+  });
 
+  describe('GET /users', function() {
+    it('returns a list of users', function(done) {
+      superagent
+        .get('http://localhost:3000/users?profession=programmer&citysort=-1')
+        .set('Accept', 'application/json')
+        .end(function(err, res) {
+          expect(res.statusCode).to.equal(200);
+          expect(res.body.users.length).to.equal(2);
+          done(err);
+        });
+    });
   });
 });

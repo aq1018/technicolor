@@ -25,6 +25,7 @@ module.exports = function() {
   server.post('/auth', ioc.create('routes/auth'));
   server.get('/readdir', ioc.create('routes/readdir'));
   server.get('/health', ioc.create('routes/health'));
+  server.get('/users', ioc.create('routes/users'));
 
   // Boot server
   server.listen(process.env.PORT || 8080, function() {
