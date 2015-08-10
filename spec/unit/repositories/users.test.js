@@ -9,14 +9,9 @@ var fixtures = require('../../support/fixtures');
 
 describe('repositories', function() {
   describe('users', function() {
-    var records = [{
-      username: 'alice'
-    }, {
-      username: 'bob'
-    }];
-
     describe('.getByUsername', function() {
       before(function(done) {
+        var records = require('../../fixtures/users');
         fixtures.populate('users', records).nodeify(done);
       });
 
@@ -26,7 +21,7 @@ describe('repositories', function() {
 
       it('returns null when user is not found', function(done) {
         users
-          .getByUsername('charlie')
+          .getByUsername('aaron')
           .then(function(user) {
             expect(user).to.be.null;
           })
@@ -38,7 +33,7 @@ describe('repositories', function() {
           .getByUsername('bob')
           .then(function(user) {
             expect(user).to.exist;
-            expect(user).to.have.all.keys(['_id', 'username']);
+            expect(user).to.contain.keys(['_id', 'username']);
             expect(user.username).to.equal('bob');
           })
           .nodeify(done);

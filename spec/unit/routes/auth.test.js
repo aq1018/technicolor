@@ -12,16 +12,8 @@ var fixtures = require('../../support/fixtures');
 
 describe('routes', function() {
   describe('auth', function() {
-
-    // the original password for this hash is 'changeme'
-    var hash = '$2a$10$t2x5pNgPL1RYAKi/pF9Z2eLaoAC.dYRS67LfPfOUMwhnf6GNOiDVq';
-
-    var records = [{
-      username: 'alice',
-      passwordHash: hash
-    }];
-
     before(function(done) {
+      var records = require('../../fixtures/users');
       fixtures.populate('users', records).nodeify(done);
     });
 
