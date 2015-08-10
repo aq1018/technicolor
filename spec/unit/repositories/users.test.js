@@ -2,6 +2,8 @@
 
 'use strict';
 
+require('../../support');
+
 var Q = require('q');
 var mongo = ioc.create('mongo');
 var users = ioc.create('repositories/users');

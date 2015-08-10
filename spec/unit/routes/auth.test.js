@@ -2,7 +2,7 @@
 
 'use strict';
 
-require('../helper');
+require('../../support');
 
 var Q = require('q');
 var httpMocks = require('node-mocks-http');

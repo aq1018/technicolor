@@ -2,7 +2,7 @@
 
 'use strict';
 
-require('../helper');
+require('../../support');
 
 var path = require('path');
 var Q = require('q');

@@ -2,7 +2,7 @@
 
 'use strict';
 
-require('../helper');
+require('../../support');
 
 var auth = ioc.create('services/auth');
 

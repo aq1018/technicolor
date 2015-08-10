@@ -2,7 +2,7 @@
 
 'use strict';
 
-require('../helper');
+require('../../support');
 
 var mongo = ioc.create('mongo');
 
