@@ -18,6 +18,7 @@
   "homepage": "https://github.com/aq1018/technicolor#readme",
   "dependencies": {
     "bcrypt": "^0.8.4",
+    "dotenv": "^1.2.0",
     "electrolyte": "0.0.6",
     "mongodb": "^1.4.39",
     "mongoskin": "^1.4.13",
