@@ -16,7 +16,7 @@ describe('routes', function() {
         method: 'GET',
         url: '/readdir',
         query: {
-          path: path.normalize(path.join(__dirname, '..', '..', 'dirtest'))
+          path: path.normalize(path.join(__dirname, '..', '..', 'fixtures', 'dirtest'))
         }
       });
 

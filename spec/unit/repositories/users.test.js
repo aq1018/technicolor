@@ -5,7 +5,7 @@
 var Q = require('q');
 var mongo = ioc.create('mongo');
 var users = ioc.create('repositories/users');
-var fixtures = require('../support/fixtures');
+var fixtures = require('../../support/fixtures');
 
 describe('repositories', function() {
   describe('users', function() {

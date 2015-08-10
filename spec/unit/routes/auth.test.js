@@ -8,7 +8,7 @@ var Q = require('q');
 var httpMocks = require('node-mocks-http');
 var mongo = ioc.create('mongo');
 var handler = ioc.create('routes/auth');
-var fixtures = require('../support/fixtures');
+var fixtures = require('../../support/fixtures');
 
 describe('routes', function() {
   describe('auth', function() {
