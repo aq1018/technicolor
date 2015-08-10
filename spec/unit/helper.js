@@ -1,5 +1,9 @@
 'use strict';
 
+// set default node environment variables
+process.env.NODE_ENV = process.env.NODE_ENV || 'test';
+require('dotenv').load();
+
 // setup IoC
 var ioc = require('electrolyte');
 
