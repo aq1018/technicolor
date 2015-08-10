@@ -1,9 +1,8 @@
-/* global ioc */
-
 'use strict';
 
 // other support functions
 var Q = require('q');
+var ioc = require('electrolyte');
 var mongo = ioc.create('mongo');
 
 // load fixtures in bulk
